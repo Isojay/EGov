@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import { useToken } from '@/app/context/TokenContext';
 import RegistrationForm from './RegistrationForm';
+import axiosInstance from "@/app/services/axiosInstance";
 
 interface LoginResponse {
     message: string;
@@ -30,7 +31,7 @@ const LoginForm: React.FC = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post<LoginResponse>('http://localhost:8080/public/authenticate', AuthenticationRequest, {
+            const response = await axiosInstance.post<LoginResponse>('/public/authenticate', AuthenticationRequest, {
                 headers: {
                     'Content-Type': 'application/json',
                 },

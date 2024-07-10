@@ -4,6 +4,7 @@ import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; // Import CSS for toast notifications
 import { useRouter } from 'next/navigation';
+import axiosInstance from "@/app/services/axiosInstance";
 
 interface RegistrationResponse {
     message: string;
@@ -38,8 +39,8 @@ const RegistrationForm: React.FC = () => {
         };
 
         try {
-            const response = await axios.post<RegistrationResponse>(
-                'http://localhost:8080/public/register',
+            const response = await axiosInstance.post<RegistrationResponse>(
+                '/public/register',
                 RegistrationRequest,
                 {
                     headers: {

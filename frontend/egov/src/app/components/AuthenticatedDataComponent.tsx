@@ -70,13 +70,13 @@ const AuthenticatedDataComponent: React.FC = () => {
     }
 
     if (!data) {
-        return null; // Handle this case as per your application's requirements
+        return <p>No data available.</p>;
     }
 
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">User Data</h1>
-            {data.details.birth.length > 0 && (
+            {data.details?.birth.length > 0 && (
                 <div>
                     <h2 className="text-xl font-semibold">Birth Records</h2>
                     <ul>
@@ -90,7 +90,7 @@ const AuthenticatedDataComponent: React.FC = () => {
                     </ul>
                 </div>
             )}
-            {data.details.death.length > 0 && (
+            {data.details?.death.length > 0 && (
                 <div>
                     <h2 className="text-xl font-semibold mt-4">Death Records</h2>
                     <ul>
@@ -104,7 +104,7 @@ const AuthenticatedDataComponent: React.FC = () => {
                     </ul>
                 </div>
             )}
-            {(data.details.birth.length === 0 && data.details.death.length === 0) && (
+            {(data.details?.birth.length === 0 && data.details?.death.length === 0) && (
                 <p>No records found.</p>
             )}
             <ToastContainer position="bottom-right" autoClose={3000} />

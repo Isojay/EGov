@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import axiosInstance from "@/app/services/axiosInstance";
 
 const DeathRegistrationForm: React.FC = () => {
     const [deceasedName, setDeceasedName] = useState('');
@@ -22,7 +23,7 @@ const DeathRegistrationForm: React.FC = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:8080/public/death/register', deathRecord, {
+            const response = await axiosInstance.post('/public/death/register', deathRecord, {
                 headers: {
                     'Content-Type': 'application/json',
                 },
