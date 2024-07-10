@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DeathRecordService {
@@ -21,6 +22,15 @@ public class DeathRecordService {
         deathRecord.setStatus(false);
         deathRecord.setRegisteredBy("Ram Bahadur");
         deathRecordRepository.save(deathRecord);
+    }
+
+    public void verify(Long id){
+        Optional<DeathRecord> deathRecord = deathRecordRepository.findById(id);
+        if (deathRecord.isPresent()){
+            DeathRecord record =  deathRecord.get();
+            record.setStatus(true);
+            deathRecordRepository.save(record);
+        }
     }
 
     public List<DeathRecord> fetchAllRecords(){

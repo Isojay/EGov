@@ -23,6 +23,11 @@ public class BirthRecordController {
         this.jwtService = jwtService;
     }
 
+    @GetMapping("/verify/{id}")
+    public void verify(@PathVariable Long id ){
+        birthRecordService.verify(id);
+    }
+
     @PostMapping("/register")
     public void registerBirth(@RequestBody BirthRecord birthRecord,HttpServletRequest request){
 

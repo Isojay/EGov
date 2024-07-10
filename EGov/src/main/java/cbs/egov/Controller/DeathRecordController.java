@@ -33,6 +33,11 @@ public class DeathRecordController {
         return deathRecordService.fetchAllRecords();
     }
 
+    @GetMapping("/verify/{id}")
+    public void verify(@PathVariable Long id ){
+        deathRecordService.verify(id);
+    }
+
     @PostMapping("/search")
     public DeathRecord fetchRecords(@RequestBody SearchRequest searchRequest) {
         System.out.println(searchRequest.getDate());

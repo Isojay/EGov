@@ -13,8 +13,8 @@ const BirthRecordItem: React.FC<BirthRecordItemProps> = ({ record, tokenAvailabl
 
     const handleVerify = async () => {
         try {
-            await axios.post(`/public/birth/verify/${record.id}`);
-            // Assuming the backend updates the record status, you may want to refresh the list here
+            await axios.get(`/public/birth/verify/${record.id}`);
+            window.location.reload();
         } catch (error) {
             console.error('Error verifying birth record:', error);
             // Handle error as needed

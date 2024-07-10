@@ -21,6 +21,7 @@ const BirthRecordsList: React.FC = () => {
             try {
                 const response = await axios.get('/public/birth/fetchAll');
                 setBirthRecords(response.data);
+                console.log(response.data)
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching birth records:', error);
